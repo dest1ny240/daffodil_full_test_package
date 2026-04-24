@@ -1,0 +1,169 @@
+Apache Daffodil
+Copyright 2024 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+Based on source code originally developed by
+- The Univerisity of Illinois National Center for Supercomputing Applications (http://www.ncsa.illinois.edu/)
+- Tresys Technology (http://www.tresys.com/)
+- International Business Machines Corporation (http://www.ibm.com)
+
+The following NOTICE information applies to binary components distributed with this project:
+
+- com.fasterxml.jackson.core.jackson-core-<VERSION>.jar
+  # Jackson JSON processor
+
+  Jackson is a high-performance, Free/Open Source JSON processing library.
+  It was originally written by Tatu Saloranta (tatu.saloranta@iki.fi), and has
+  been in development since 2007.
+  It is currently developed by a community of developers.
+
+  ## Copyright
+
+  Copyright 2007-, Tatu Saloranta (tatu.saloranta@iki.fi)
+
+  ## Licensing
+
+  Jackson 2.x core and extension components are licensed under Apache License 2.0
+  To find the details that apply to this artifact see the accompanying LICENSE file.
+
+  ## Credits
+
+  A list of contributors may be found from CREDITS(-2.x) file, which is included
+  in some artifacts (usually source distributions); but is always available
+  from the source code management (SCM) system project uses.
+
+  ## FastDoubleParser
+
+  jackson-core bundles a shaded copy of FastDoubleParser <https://github.com/wrandelshofer/FastDoubleParser>.
+  That code is available under an MIT license <https://github.com/wrandelshofer/FastDoubleParser/blob/main/LICENSE>
+  under the following copyright.
+
+  Copyright © 2023 Werner Randelshofer, Switzerland. MIT License.
+
+  See FastDoubleParser-NOTICE for details of other source code included in FastDoubleParser
+  and the licenses and copyrights that apply to that code.
+
+- com.typesafe.scala-logging.scala-logging_<VERSION>.jar
+  Copyright 2014-2021 Lightbend, Inc.
+
+- commons-codec.commons-codec-<VERSION>.jar
+  Apache Commons Codec
+  Copyright 2002-2020 The Apache Software Foundation
+
+  src/test/org/apache/commons/codec/language/DoubleMetaphoneTest.java
+  contains test data from http://aspell.net/test/orig/batch0.tab.
+  Copyright (C) 2002 Kevin Atkinson (kevina@gnu.org)
+
+  ===============================================================================
+
+  The content of package org.apache.commons.codec.language.bm has been translated
+  from the original php source code available at http://stevemorse.org/phoneticinfo.htm
+  with permission from the original authors.
+  Original source copyright:
+  Copyright (c) 2008 Alexander Beider & Stephen P. Morse.
+
+- commons-io.commons-io-<VERSION>.jar
+  Apache Commons IO
+  Copyright 2002-2021 The Apache Software Foundation
+
+- org.apache.daffodil.daffodil-lib-<VERSION>.jar
+  Apache Daffodil
+  Copyright 2024 The Apache Software Foundation
+
+  Based on source code originally developed by
+  - The Univerisity of Illinois National Center for Supercomputing Applications (http://www.ncsa.illinois.edu/)
+  - Tresys Technology (http://www.tresys.com/)
+  - International Business Machines Corporation (http://www.ibm.com)
+
+  The following NOTICE information applies to components distributed with this project:
+
+  This product includes derived works from Scala
+    Scala
+    Copyright (c) 2002-2024 EPFL
+    Copyright (c) 2011-2024 Lightbend, Inc.
+
+    Scala includes software developed at
+    LAMP/EPFL (https://lamp.epfl.ch/) and
+    Lightbend, Inc. (https://www.lightbend.com/).
+
+    The derived work is adapted from scala/src/library/scala/Symbol.scala:
+      https://github.com/scala/scala/blob/904e3a5d2b9616b9c533d77d0c51652b138e8659/src/library/scala/Symbol.scala
+    and can be found in:
+      daffodil-lib/src/main/scala/org/apache/daffodil/util/UniquenessCache.scala
+
+- org.apache.httpcomponents.client5.httpclient5-<VERSION>.jar
+  Apache HttpClient
+  Copyright 1999-2020 The Apache Software Foundation
+
+- org.apache.httpcomponents.core5.httpcore5-<VERSION>.jar
+  Apache HttpComponents Core HTTP/1.1
+  Copyright 2005-2020 The Apache Software Foundation
+
+- org.apache.httpcomponents.core5.httpcore5-h2-<VERSION>.jar
+  Apache HttpComponents Core HTTP/2
+  Copyright 2005-2020 The Apache Software Foundation
+
+- org.jdom.jdom2-<VERSION>.jar
+  Copyright (C) 2000-2012 Jason Hunter & Brett McLaughlin.
+  All rights reserved.
+
+  This product includes software developed by the
+  JDOM Project (http://www.jdom.org/).
+
+- org.scala-lang.modules.scala-parser-combinators_<VERSION>.jar
+  Scala parser combinators
+  Copyright (c) 2002-2022 EPFL
+  Copyright (c) 2011-2022 Lightbend, Inc.
+
+  Scala includes software developed at
+  LAMP/EPFL (https://lamp.epfl.ch/) and
+  Lightbend, Inc. (https://www.lightbend.com/).
+
+- org.scala-lang.modules.scala-xml_<VERSION>.jar
+  scala-xml
+  Copyright (c) 2002-2022 EPFL
+  Copyright (c) 2011-2022 Lightbend, Inc.
+
+  scala-xml includes software developed at
+  LAMP/EPFL (https://lamp.epfl.ch/) and
+  Lightbend, Inc. (https://www.lightbend.com/).
+
+- org.scala-lang.scala-library-<VERSION>.jar
+- org.scala-lang.scala-reflect-<VERSION>.jar
+  Scala
+  Copyright (c) 2002-2023 EPFL
+  Copyright (c) 2011-2023 Lightbend, Inc.
+
+  Scala includes software developed at
+  LAMP/EPFL (https://lamp.epfl.ch/) and
+  Lightbend, Inc. (https://www.lightbend.com/).
+
+- xerces.xercesImpl-<VERSION>.jar
+  Apache Xerces Java
+  Copyright 1999-2022 The Apache Software Foundation
+
+  Portions of this software were originally based on the following:
+    - software copyright (c) 1999, IBM Corporation., http://www.ibm.com.
+    - software copyright (c) 1999, Sun Microsystems., http://www.sun.com.
+    - voluntary contributions made by Paul Eng on behalf of the 
+      Apache Software Foundation that were originally developed at iClick, Inc.,
+      software copyright (c) 1999.
+
+- xml-apis.xml-apis-<VERSION>.jar
+  Apache XML Commons XML APIs
+  Copyright 1999-2009 The Apache Software Foundation.
+
+  Portions of this software were originally based on the following:
+    - software copyright (c) 1999, IBM Corporation., http://www.ibm.com.
+    - software copyright (c) 1999, Sun Microsystems., http://www.sun.com.
+    - software copyright (c) 2000 World Wide Web Consortium, http://www.w3.org
+
+- xml-resolver.xml-resolver-<VERSION>.jar
+  Apache XML Commons Resolver
+  Copyright 2006 The Apache Software Foundation.
+
+  Portions of this code are derived from classes placed in the
+  public domain by Arbortext on 10 Apr 2000. See:
+  http://www.arbortext.com/customer_support/updates_and_technical_notes/catalogs/docs/README.htm

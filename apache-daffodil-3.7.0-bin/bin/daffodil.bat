@@ -1,0 +1,63 @@
+@echo off
+REM
+REM Licensed to the Apache Software Foundation (ASF) under one or more
+REM contributor license agreements.  See the NOTICE file distributed with
+REM this work for additional information regarding copyright ownership.
+REM The ASF licenses this file to You under the Apache License, Version 2.0
+REM (the "License"); you may not use this file except in compliance with
+REM the License.  You may obtain a copy of the License at
+REM 
+REM     http://www.apache.org/licenses/LICENSE-2.0
+REM 
+REM Unless required by applicable law or agreed to in writing, software
+REM distributed under the License is distributed on an "AS IS" BASIS,
+REM WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+REM See the License for the specific language governing permissions and
+REM limitations under the License.
+
+REM DAFFODIL_CLASSPATH
+REM
+REM The Daffodil implementation will look on the classpath for 'includes' and
+REM 'imports'. To defined additional directories where Daffodil should look for
+REM files, set the DAFFODIL_CLASSPATH environment variable, for example:
+REM
+REM   set DAFFODIL_CLASSPATH="/path/to/imports/;/path/to/includes/"
+REM
+REM In addition to defining directories to search for imports and includes, you
+REM can add a "CatalogManager.properties" file to the DAFFODIL_CLASSPATH to
+REM direct Daffodil to a relative path location of a user XML Catalog.
+REM
+REM
+REM DAFFODIL_JAVA_OPTS
+REM
+REM If you need to specify java options specific to Daffodil, you can set the
+REM DAFFODIL_JAVA_OPTS environment variable. If not specified, the JAVA_OPTS
+REM environment variable will be used. If that is not specified, reasonable
+REM defaults for Daffodil will be defined.
+
+setlocal
+
+set MAINCLASS=org.apache.daffodil.cli.Main
+set BINDIR=%~dp0
+set LIBDIR=%BINDIR%..\lib
+set CONFDIR=%BINDIR%..\conf
+set CLASSPATH=%LIBDIR%\*
+
+if defined DAFFODIL_JAVA_OPTS (
+	set "JOPTS=%DAFFODIL_JAVA_OPTS%"
+) else if defined JAVA_OPTS (
+	set "JOPTS=%JAVA_OPTS%"
+)
+
+if defined DAFFODIL_CLASSPATH (
+	set "CLASSPATH=%CLASSPATH%;%DAFFODIL_CLASSPATH%"
+)
+
+REM Prepend additional java options that must be provided. By prepending, a user
+REM can override options by redefining them in JAVA_OPTS or DAFFODIL_JAVA_OPTS
+set DEFAULT_JOPTS=
+set DEFAULT_JOPTS=%DEFAULT_JOPTS% -Xms1024m
+set DEFAULT_JOPTS=%DEFAULT_JOPTS% -Xmx1024m
+set DEFAULT_JOPTS=%DEFAULT_JOPTS% -XX:ReservedCodeCacheSize=128m
+
+java %DEFAULT_JOPTS% %JOPTS% -cp "%CLASSPATH%" %MAINCLASS% %*

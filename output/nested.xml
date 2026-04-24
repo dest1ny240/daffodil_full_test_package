@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+  <person>
+    <name>Alice</name>
+    <age>20</age>
+    <city>Helsinki</city>
+  </person>
+  <person>
+    <name>Bob</name>
+    <age>25</age>
+    <city>Espoo</city>
+  </person>
+</people>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/">
+  <xs:annotation>
+    <xs:appinfo source="http://www.ogf.org/dfdl/">
+      <dfdl:format textBidi="no" floating="no" encodingErrorPolicy="replace"
+                   outputNewLine="%LF;" escapeSchemeRef=""
+                   leadingSkip="0" trailingSkip="0" alignment="1"
+                   alignmentUnits="bytes" textPadKind="none" textTrimKind="none"
+                   truncateSpecifiedLengthString="no" textNumberRounding="explicit"
+                   textNumberRoundingMode="roundUnnecessary" textNumberRoundingIncrement="1"
+                   textStandardZeroRep="" textNumberCheckPolicy="strict"
+                   textNumberRep="standard" textNumberPattern="#0" textStandardBase="10"
+                   choiceLengthKind="implicit" calendarCheckPolicy="strict"
+                   calendarLanguage="en" representation="text" encoding="UTF-8"
+                   fillByte="%#r00;" lengthKind="delimited" separator="" initiator=""
+                   terminator="" ignoreCase="no" occursCountKind="fixed"
+                   sequenceKind="ordered" initiatedContent="no"
+                   separatorSuppressionPolicy="trailingEmpty"
+                   emptyValueDelimiterPolicy="both"/>
+    </xs:appinfo>
+  </xs:annotation>
+
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence dfdl:separator="%NL;" dfdl:separatorPosition="infix">
+        <xs:element name="record" maxOccurs="unbounded" dfdl:occursCountKind="implicit">
+          <xs:complexType>
+            <xs:sequence dfdl:separator="," dfdl:separatorPosition="infix">
+              <xs:element name="name" type="xs:string" dfdl:lengthKind="delimited"/>
+              <xs:element name="age" type="xs:string" dfdl:lengthKind="delimited"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

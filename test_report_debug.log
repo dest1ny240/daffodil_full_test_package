@@ -1,0 +1,35 @@
++ set -euo pipefail
++++ dirname ./run_tests.sh
+++ cd .
+++ pwd
++ ROOT_DIR=/home/destiny/daffodil_full_test_package
++ DAFFODIL_BIN=/home/destiny/daffodil_full_test_package/apache-daffodil-3.7.0-bin/bin/daffodil
++ OUT_DIR=/home/destiny/daffodil_full_test_package/output
++ mkdir -p /home/destiny/daffodil_full_test_package/output
++ echo '[1/5] 运行 CSV 功能测试...'
+[1/5] 运行 CSV 功能测试...
++ /home/destiny/daffodil_full_test_package/apache-daffodil-3.7.0-bin/bin/daffodil parse -s /home/destiny/daffodil_full_test_package/schemas/csv_schema.xsd /home/destiny/daffodil_full_test_package/input/valid.csv -o /home/destiny/daffodil_full_test_package/output/result.xml
++ echo '[2/5] 运行复杂结构测试...'
+[2/5] 运行复杂结构测试...
++ /home/destiny/daffodil_full_test_package/apache-daffodil-3.7.0-bin/bin/daffodil parse -s /home/destiny/daffodil_full_test_package/schemas/complex_schema.xsd /home/destiny/daffodil_full_test_package/input/nested.txt -o /home/destiny/daffodil_full_test_package/output/nested.xml
++ echo '[3/5] 验证负向用例（应失败）...'
+[3/5] 验证负向用例（应失败）...
++ /home/destiny/daffodil_full_test_package/apache-daffodil-3.7.0-bin/bin/daffodil parse -s /home/destiny/daffodil_full_test_package/schemas/csv_schema.xsd /home/destiny/daffodil_full_test_package/input/invalid.csv
++ echo '✅ 负向测试通过（正确报错）。'
+✅ 负向测试通过（正确报错）。
++ echo '[4/5] 比对 valid.xml（规范化后）...'
+[4/5] 比对 valid.xml（规范化后）...
+++ normalize_xml /home/destiny/daffodil_full_test_package/expected/valid.xml
+++ python3 - /home/destiny/daffodil_full_test_package/expected/valid.xml
+++ normalize_xml /home/destiny/daffodil_full_test_package/output/result.xml
+++ python3 - /home/destiny/daffodil_full_test_package/output/result.xml
++ [[ <root><record><name>Alice</name><age>20</age></record><record><name>Bob</name><age>25</age></record></root> != \<\r\o\o\t\>\<\r\e\c\o\r\d\>\<\n\a\m\e\>\A\l\i\c\e\<\/\n\a\m\e\>\<\a\g\e\>\2\0\<\/\a\g\e\>\<\/\r\e\c\o\r\d\>\<\r\e\c\o\r\d\>\<\n\a\m\e\>\B\o\b\<\/\n\a\m\e\>\<\a\g\e\>\2\5\<\/\a\g\e\>\<\/\r\e\c\o\r\d\>\<\/\r\o\o\t\> ]]
++ echo '[5/5] 比对 nested.xml（规范化后）...'
+[5/5] 比对 nested.xml（规范化后）...
+++ normalize_xml /home/destiny/daffodil_full_test_package/expected/nested.xml
+++ python3 - /home/destiny/daffodil_full_test_package/expected/nested.xml
+++ normalize_xml /home/destiny/daffodil_full_test_package/output/nested.xml
+++ python3 - /home/destiny/daffodil_full_test_package/output/nested.xml
++ [[ <people><person><name>Alice</name><age>20</age><city>Helsinki</city></person><person><name>Bob</name><age>25</age><city>Espoo</city></person></people> != \<\p\e\o\p\l\e\>\<\p\e\r\s\o\n\>\<\n\a\m\e\>\A\l\i\c\e\<\/\n\a\m\e\>\<\a\g\e\>\2\0\<\/\a\g\e\>\<\c\i\t\y\>\H\e\l\s\i\n\k\i\<\/\c\i\t\y\>\<\/\p\e\r\s\o\n\>\<\p\e\r\s\o\n\>\<\n\a\m\e\>\B\o\b\<\/\n\a\m\e\>\<\a\g\e\>\2\5\<\/\a\g\e\>\<\c\i\t\y\>\E\s\p\o\o\<\/\c\i\t\y\>\<\/\p\e\r\s\o\n\>\<\/\p\e\o\p\l\e\> ]]
++ echo '✅ 全部测试通过。'
+✅ 全部测试通过。
