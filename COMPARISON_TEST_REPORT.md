@@ -14,6 +14,7 @@
 |--------|------|
 | Parse 输出跨平台（规范化 XML） | **通过** — WSL 与 Windows 的 `result.canon.txt`、`nested.canon.txt` 字节级一致（MD5 相同） |
 | Windows Round trip（可选 §4） | **通过** — `valid.canon.txt` 与 `back.canon.txt` MD5 相同 |
+| Invalid-schema / 负向校验（`invalid.csv`） | **通过** — 使用 `csv_schema.xsd` 解析 `input/invalid.csv` 正确失败，退出码 `20`，并有分隔符缺失报错证据日志 |
 | WSL 侧 Round trip 与 Windows `back.canon.txt` 交叉对比 | **未执行** — `output/compare_wsl/` 中无 `back.canon.txt`；若需完整跨平台往返对比，请在 WSL 按 COMPATIBILITY §4 生成后再与 `output/compare_win/back.canon.txt` 比对 |
 
 ---
@@ -76,6 +77,26 @@ python tools\canonicalize_xml.py output\compare_win\nested.xml > output\compare_
 
 ---
 
+## 5.1 Invalid-schema / 负向校验证据（Windows）
+
+执行命令（stderr/stdout 分流保存）：
+
+```powershell
+.\apache-daffodil-3.7.0-bin\bin\daffodil.bat parse -s schemas\csv_schema.xsd input\invalid.csv 1> output\compare_win\invalid_parse.stdout.log 2> output\compare_win\invalid_parse.stderr.log
+```
+
+执行结果：
+
+- 退出码：`20`（非 0，符合“负向用例应失败”预期）
+- 关键报错（节选）：
+  - `Parse Error: Failed to find infix separator`
+  - `The expected delimiter(s) were: separator ','`
+  - `Data location was preceding byte 5`
+
+判定：`input/invalid.csv` 未满足 `schemas/csv_schema.xsd` 定义的逗号分隔记录结构，Daffodil 正确拒绝解析，**负向校验通过**。
+
+---
+
 ## 6. 相关产出路径
 
 | 路径 | 说明 |
@@ -83,6 +104,7 @@ python tools\canonicalize_xml.py output\compare_win\nested.xml > output\compare_
 | `output/compare_wsl/*.xml`、`*.canon.txt` | WSL 基线（parse + 规范化） |
 | `output/compare_win/*.xml`、`*.canon.txt` | Windows parse + 规范化 |
 | `output/compare_win/back.csv`、`back.canon.txt`、`valid.canon.txt` | Windows Round trip 产物 |
+| `output/compare_win/invalid_parse.stderr.log`、`invalid_parse.stdout.log` | Invalid-schema 负向校验日志 |
 
 ---
 
